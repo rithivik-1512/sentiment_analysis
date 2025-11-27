@@ -1,114 +1,75 @@
-Sentiment Analysis Project
+# Sentiment Analysis Project
 
-A machine learning based sentiment classifier built using Logistic Regression and TF-IDF vectorization. This repository includes the full training pipeline, model artifacts, test datasets, and a deployment-ready application script.
+This project predicts the sentiment of text reviews (**Positive** or **Negative**) using **Logistic Regression** and **TF-IDF vectorization**. It includes data preprocessing, model training, and a simple app for real-time predictions.
 
-Project Structure
-.
-├── NLP_coding.py              # Training, preprocessing, evaluation, model saving
-├── app_building.py            # UI app for real-time sentiment prediction
-├── sentiment_model.pkl        # Trained Logistic Regression model
-├── tfidf_vectorizer.pkl       # Fitted TF-IDF vectorizer
-├── test_df.csv                # Test dataset
-├── sample_df.csv              # Sample dataset
-└── README.md                  # Documentation
+## Dataset
 
-Overview
+* **Test dataset:** `test_df.csv`  
+* **Sample dataset:** `sample_df.csv`
 
-This project performs binary sentiment classification (Positive/Negative) on text reviews using:
+You can use any labeled sentiment dataset (e.g., IMDB reviews, Amazon reviews, etc.).
 
-TF-IDF Vectorization
+## Features Used
 
-Logistic Regression
+* **Text reviews** (preprocessed for lowercase, punctuation removal, and stopwords)
+* **TF-IDF features** extracted from the text
 
-Scikit-Learn, NumPy, Pandas
+## Preprocessing Steps
 
-Streamlit/CLI application for predictions
+1. Clean text:
+   * Convert to lowercase
+   * Remove punctuation
+   * Remove stopwords (e.g., "the", "is", "and")
+2. Transform text to numerical features using **TF-IDF Vectorization**
 
-It is suitable for quick demonstrations, academic projects, and portfolio use.
+## Model
 
-How It Works
+* **Algorithm:** Logistic Regression  
+* **Library:** scikit-learn (`LogisticRegression`)
 
-Load IMDb-style text dataset
+## How to Run
 
-Clean and preprocess the text
+1. Install dependencies:
 
-Convert text to numerical features using TF-IDF
-
-Train Logistic Regression model
-
-Save the trained model and vectorizer
-
-Use the app to classify user-entered text as Positive or Negative
-
-Files Description
-NLP_coding.py
-
-Loads dataset
-
-Preprocesses text
-
-Trains Logistic Regression model
-
-Saves sentiment_model.pkl and tfidf_vectorizer.pkl
-
-Evaluates the model
-
-app_building.py
-
-Loads the trained model and vectorizer
-
-Accepts user input
-
-Performs TF-IDF transformation
-
-Predicts sentiment in real time
-
-sentiment_model.pkl
-
-Serialized trained ML model.
-
-tfidf_vectorizer.pkl
-
-Serialized TF-IDF vectorizer fitted on training data.
-
-test_df.csv / sample_df.csv
-
-Datasets used for testing and demonstration.
-
-How to Run
-1. Install Dependencies
+```bash
 pip install numpy pandas scikit-learn streamlit joblib matplotlib
+```
 
-2. (Optional) Retrain the Model
+2. (Optional) Retrain the model:
+
+```bash
 python NLP_coding.py
+```
 
-3. Run the Application
+3. Run the app:
+   * For CLI:
 
-If it is a Python CLI app:
+   ```bash
+   python app_building.py
+   ```
 
-python app_building.py
+   * For Streamlit:
 
+   ```bash
+   streamlit run app_building.py
+   ```
 
-If it is a Streamlit app:
+## Folder Structure
 
-streamlit run app_building.py
+```
+sentiment-analysis/
+│
+├── NLP_coding.py
+├── app_building.py
+├── sentiment_model.pkl
+├── tfidf_vectorizer.pkl
+├── test_df.csv
+├── sample_df.csv
+└── README.md
+```
 
-Model Performance
+## Notes
 
-Accuracy: ~89–92% (varies depending on dataset split)
-
-Balanced precision and recall
-
-Technologies Used
-
-Python 3.x
-
-Scikit-Learn
-
-Pandas
-
-NumPy
-
-Streamlit
-
-Joblib
+* Model accuracy: ~89–92%
+* Can be extended with additional preprocessing (lemmatization, n-grams) or classifiers (Random Forest, SVM, Neural Networks)
+* Ideal for portfolio and demo purposes
